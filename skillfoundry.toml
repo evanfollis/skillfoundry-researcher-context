@@ -1,0 +1,12 @@
+[repository]
+schema_version = "1"
+name = "Researcher Context"
+agent_id = "researcher"
+
+[frontdoor]
+pinned_paths = ["README.md", "memory/mission.md", "memory/profiles/researcher.md"]
+discoverable_paths = ["bundles", "memory", "artifacts"]
+
+[promotion_policy]
+promotable_memory_roots = ["profiles", "notes", "plans", "findings"]
+required_validation_kinds = ["canon-safe", "frontdoor-reviewed", "research-grounded"]
