@@ -3,6 +3,7 @@
 - agent_id: researcher
 - role: research
 - requested_profiles: researcher
+- requested_skills: (none declared)
 - resolved_profile_stack: default, researcher
 
 ## Persona

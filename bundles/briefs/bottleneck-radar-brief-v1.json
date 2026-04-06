@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "bottleneck-radar-brief-v1",
+  "purpose": "Builder-ready brief for the first Skillfoundry product targeting AgenticMarket.",
+  "owners": [
+    {
+      "name": "Skillfoundry Researcher",
+      "contact": "agent://researcher"
+    }
+  ],
+  "sources": [
+    {
+      "kind": "doc",
+      "locator": "skillfoundry-researcher-context://memory/findings/ranked_bottlenecks.md",
+      "captured_at": "2026-04-06T00:00:00Z",
+      "notes": "Selected first opportunity and ranking rationale."
+    },
+    {
+      "kind": "doc",
+      "locator": "skillfoundry-researcher-context://memory/findings/agenticmarket_distribution.md",
+      "captured_at": "2026-04-06T00:00:00Z",
+      "notes": "Distribution constraints for the first launch surface."
+    }
+  ],
+  "content": [
+    {
+      "id": "product",
+      "type": "summary",
+      "body": "Build `bottleneck-radar`, a hosted MCP server that turns noisy builder signals into ranked bottlenecks and concise opportunity briefs.",
+      "source_refs": [0]
+    },
+    {
+      "id": "user",
+      "type": "fact",
+      "body": "Primary users are solo AI builders and small technical automation agencies already using MCP-capable tools and evaluating new developer leverage quickly.",
+      "source_refs": [0, 1]
+    },
+    {
+      "id": "tool-surface",
+      "type": "instruction",
+      "body": "Keep the first release narrow: `analyze_signals` for clustering and ranking evidence-backed bottlenecks, plus `draft_brief` for turning one bottleneck into a product brief.",
+      "source_refs": [0]
+    },
+    {
+      "id": "distribution-constraints",
+      "type": "constraint",
+      "body": "The server must be deployed at a public HTTPS endpoint, expose discoverable tools, and ship with listing-ready documentation because AgenticMarket constrains post-publish changes to name, URL, and price.",
+      "source_refs": [1]
+    },
+    {
+      "id": "pricing-hypothesis",
+      "type": "example",
+      "body": "Initial launch hypothesis: $0.08 per successful call, published unlisted first to validate install-to-value and listing clarity before broader visibility.",
+      "source_refs": [1]
+    }
+  ],
+  "promotion": {
+    "status": "candidate",
+    "reviewed_at": "2026-04-06T00:00:00Z",
+    "compatibility": "additive",
+    "notes": "First product brief candidate aligned to the AgenticMarket launch loop."
+  }
+}

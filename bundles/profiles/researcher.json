@@ -43,14 +43,14 @@
   "promotion": {
     "compatibility": "additive",
     "notes": "Resolved profile stack: default, researcher",
-    "reviewed_at": "2026-04-04T15:49:45Z",
+    "reviewed_at": "2026-04-06T19:11:18Z",
     "status": "promoted"
   },
   "purpose": "Resolved role profile stack for agent researcher used to seed front-door behavior.",
   "schema_version": "1.0",
   "sources": [
     {
-      "captured_at": "2026-04-04T15:49:45Z",
+      "captured_at": "2026-04-06T19:11:18Z",
       "kind": "doc",
       "locator": "skillfoundry-agents://agents/researcher/profiles",
       "notes": "Requested profiles: researcher"

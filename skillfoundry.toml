@@ -4,9 +4,16 @@ name = "Researcher Context"
 agent_id = "researcher"
 
 [frontdoor]
-pinned_paths = ["README.md", "memory/mission.md", "memory/profiles/researcher.md"]
+pinned_paths = [
+  "README.md",
+  "memory/mission.md",
+  "memory/profiles/researcher.md",
+  "memory/findings/first_icp.md",
+  "memory/findings/agenticmarket_distribution.md",
+  "memory/plans/agenticmarket_launch_loop.md"
+]
 discoverable_paths = ["bundles", "memory", "artifacts"]
 
 [promotion_policy]
-promotable_memory_roots = ["profiles", "notes", "plans", "findings"]
+promotable_memory_roots = ["profiles", "notes", "plans", "findings", "decisions", "workflows"]
 required_validation_kinds = ["canon-safe", "frontdoor-reviewed", "research-grounded"]
