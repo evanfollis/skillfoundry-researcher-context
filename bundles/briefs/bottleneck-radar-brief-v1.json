@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "bundle_id": "bottleneck-radar-brief-v1",
-  "purpose": "Builder-ready brief for the first Skillfoundry product targeting AgenticMarket.",
+  "purpose": "Builder-ready brief for the first Skillfoundry internal mechanism for opportunity discovery.",
   "owners": [
     {
       "name": "Skillfoundry Researcher",
@@ -17,16 +17,16 @@
     },
     {
       "kind": "doc",
-      "locator": "skillfoundry-researcher-context://memory/findings/agenticmarket_distribution.md",
+      "locator": "skillfoundry-researcher-context://artifacts/projections/mechanisms/bottleneck-radar-operator-note.md",
       "captured_at": "2026-04-06T00:00:00Z",
-      "notes": "Distribution constraints for the first launch surface."
+      "notes": "Operator-facing note clarifying the mechanism boundary and intended use."
     }
   ],
   "content": [
     {
       "id": "product",
       "type": "summary",
-      "body": "Build `bottleneck-radar`, a hosted MCP server that turns noisy builder signals into ranked bottlenecks and concise opportunity briefs.",
+      "body": "Build `bottleneck-radar`, an internal MCP mechanism that turns noisy builder signals into ranked bottlenecks and concise opportunity briefs.",
       "source_refs": [0]
     },
     {
@@ -38,19 +38,19 @@
     {
       "id": "tool-surface",
       "type": "instruction",
-      "body": "Keep the first release narrow: `analyze_signals` for clustering and ranking evidence-backed bottlenecks, plus `draft_brief` for turning one bottleneck into a product brief.",
+      "body": "Keep the first release narrow: `analyze_signals` for clustering and ranking evidence-backed bottlenecks, plus `draft_brief` for turning one bottleneck into an opportunity brief.",
       "source_refs": [0]
     },
     {
-      "id": "distribution-constraints",
+      "id": "mechanism-boundary",
       "type": "constraint",
-      "body": "The server must be deployed at a public HTTPS endpoint, expose discoverable tools, and ship with listing-ready documentation because AgenticMarket constrains post-publish changes to name, URL, and price.",
+      "body": "This artifact is an internal mechanism, not the first public product. It should be deployable and callable by downstream agents, but external pricing and listing decisions belong to the later product lane.",
       "source_refs": [1]
     },
     {
-      "id": "pricing-hypothesis",
+      "id": "handoff-output",
       "type": "example",
-      "body": "Initial launch hypothesis: $0.08 per successful call, published unlisted first to validate install-to-value and listing clarity before broader visibility.",
+      "body": "The mechanism should produce briefs that are good enough to hand to design, build, pricing, and growth work once one external product candidate is chosen.",
       "source_refs": [1]
     }
   ],
@@ -58,6 +58,6 @@
     "status": "candidate",
     "reviewed_at": "2026-04-06T00:00:00Z",
     "compatibility": "additive",
-    "notes": "First product brief candidate aligned to the AgenticMarket launch loop."
+    "notes": "First mechanism brief candidate aligned to the opportunity-to-launch loop."
   }
 }

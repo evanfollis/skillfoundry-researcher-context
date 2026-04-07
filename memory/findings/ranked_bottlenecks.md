@@ -7,9 +7,9 @@ Each bottleneck is ranked on:
 - pain intensity,
 - frequency,
 - closeness to our chosen ICP,
-- fit for a narrow hosted MCP server,
+- fit for a narrow MCP-native utility,
 - speed to first deploy,
-- and fit for AgenticMarket's per-call marketplace model.
+- and fit for the current external launch channel once promoted into a product.
 
 ## Current Ranking
 
@@ -68,8 +68,11 @@ comes after first launch and depends on data that new creators do not yet have.
 - build scope: medium
 - monetization fit: medium
 
-## Selected First Opportunity
+## Selected First Internal Mechanism
 
 Build around bottleneck `#1`: signal-to-opportunity synthesis for MCP builders.
 
-Working product name: `bottleneck-radar`
+Working mechanism name: `bottleneck-radar`
+
+This mechanism should help Skillfoundry identify and shape external product candidates.
+It should not be treated as the first monetized product by default.

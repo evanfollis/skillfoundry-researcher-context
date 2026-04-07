@@ -10,7 +10,7 @@ pinned_paths = [
   "memory/profiles/researcher.md",
   "memory/findings/first_icp.md",
   "memory/findings/agenticmarket_distribution.md",
-  "memory/plans/agenticmarket_launch_loop.md"
+  "memory/plans/opportunity_to_launch_loop.md"
 ]
 discoverable_paths = ["bundles", "memory", "artifacts"]
 

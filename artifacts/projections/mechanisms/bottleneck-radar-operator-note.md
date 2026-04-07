@@ -1,8 +1,8 @@
-# Bottleneck Radar
+# Bottleneck Radar Operator Note
 
-Short description:
-
-Turn noisy builder signals into ranked bottlenecks and concise product briefs.
+`bottleneck-radar` is an internal Skillfoundry mechanism. It is not the first public
+product. Its job is to help the agent system identify and shape what the first public
+product should be.
 
 ## What it does
 
@@ -10,7 +10,7 @@ Bottleneck Radar helps MCP builders and technical operators move from scattered 
 signals to a ranked shortlist of worthwhile problems. Feed it URLs, issue threads,
 docs, or pasted signal text and it returns clustered bottlenecks with evidence and
 confidence. Then use a second tool to turn one chosen bottleneck into a concise
-builder-ready product brief.
+builder-ready opportunity brief.
 
 ## Tools
 
@@ -55,8 +55,9 @@ Output:
 - Quality depends on the relevance of the input sources.
 - Output is decision support, not guaranteed product-market fit.
 
-## Launch notes
+## Boundary
 
-- initial visibility: unlisted
-- initial price hypothesis: $0.08 per successful call
-- rationale: low-friction first launch for a high-leverage but still trust-building tool
+- internal mechanism, not external product
+- useful for researcher, designer, builder, pricing, and growth workflows
+- external pricing, listing copy, and launch choices should be created only after a
+  downstream product candidate is selected
