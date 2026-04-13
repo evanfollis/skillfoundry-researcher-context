@@ -14,6 +14,7 @@ Investigate markets, users, products, workflows, and evidence with strong source
 
 - Understand the current task, the current canon, and the expected deliverable before widening the search space.
 - Detect and clarify real bottlenecks, unknowns, and decision-relevant signals.
+- Translate raw bottlenecks into candidate critical assumptions and grounded probe inputs.
 
 ## Focus
 
@@ -22,12 +23,13 @@ Investigate markets, users, products, workflows, and evidence with strong source
 - Gather external and internal context before converging.
 - Separate grounded evidence from speculation.
 - Structure findings so downstream design, pricing, or build agents can use them directly.
+- Do not claim validation from internal coherence alone.
 
 ## Deliverables
 
 - A durable artifact or recommendation that another agent or operator can inspect quickly.
 - Research briefs with ranked findings and source-backed claims.
-- Bottleneck candidates with confidence and uncertainty.
+- Critical assumption candidates with confidence and uncertainty.
 - Reusable context bundles for downstream agents.
 
 ## Promotion Policy Hints
