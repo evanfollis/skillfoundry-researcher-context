@@ -2,12 +2,12 @@
 name: CURRENT_STATE
 description: Front door for the skillfoundry-researcher-context repo — what the researcher owns, what's active, what's stale, where to dig deeper
 type: front-door
-updated: 2026-04-30
+updated: 2026-05-01
 ---
 
 # CURRENT_STATE — skillfoundry-researcher-context
 
-**Last updated**: 2026-04-30 — front-door created (harness-check gap)
+**Last updated**: 2026-05-01T14:30:04Z — reflection pass (12h automated)
 
 ---
 
@@ -33,7 +33,10 @@ This repo feeds downstream agents (valuation, growth, product) with grounded inp
 - Assumption: `memory/assumptions/launch-compliance-intelligence.md`
 - Probe draft: `memory/probes/drafts/launch-compliance-intelligence-manual-offer.md`
 - **Blocker**: Outreach not sent. Sending requires principal decision (Tally form + channel access).
-  Escalation on file: `general-skillfoundry-tally-form-needed-2026-04-18.md`
+  **WARNING (2026-05-01)**: No live escalation file found for this blocker. The file
+  `general-skillfoundry-tally-form-needed-2026-04-18.md` does not exist in
+  `runtime/.handoff/` or anywhere in the workspace. The blocker is untracked. 20 days
+  of stasis with no external evidence recorded.
 
 ### 2. Launchpad Lint — waiting for first external interaction
 
@@ -53,18 +56,43 @@ This repo feeds downstream agents (valuation, growth, product) with grounded inp
 
 ## What is stale / degraded
 
-- `memory/reports/foundry_loop_status.md` was generated 2026-04-11. Operator guidance says "run daily" — it is 19 days stale as of this update.
-- No new git commits since 2026-04-11 (`aef4c63`).
-- `valuation_root` paths in the status report reference `/opt/projects/...` (old path); canonical path is `/opt/workspace/projects/...`.
+- `memory/reports/foundry_loop_status.md` generated 2026-04-11 — **20 days stale**. Path references inside (`valuation_root`, `researcher_root`) point to `/opt/projects/...` (old path); canonical is `/opt/workspace/projects/...`. Loop likely broken by path drift.
+- No automated workflow has run since 2026-04-11. The harvest→enrich→score→draft loop (`19281a7`) emits no telemetry — cannot distinguish "ran and found nothing" from "never ran."
+- No new git commits between 2026-04-11 and 2026-04-30 (19-day gap). Only commit in that window was admin (CURRENT_STATE.md front door, `6a30136`).
+- Outreach queue has been at `drafted` status for **20 days**. No external evidence on any assumption.
+
+---
+
+## Known broken or degraded
+
+- **Outreach channel unblocked**: principal decision still needed; escalation file is missing (not tracked anywhere)
+- **Foundry loop paths stale**: `foundry_loop_status.md:3-4` references `/opt/projects/` paths. Loop likely fails silently.
+- **No telemetry**: researcher workflows emit nothing; loop health is invisible to reflection and meta-scan
+
+---
+
+## What bit the last session
+
+- No user session ran in this project's cwd in the 14:30 window. The only project JSONL is the prior reflection job (02:35 UTC).
+- Prior reflection (02:32) correctly corrected the false escalation reference in CURRENT_STATE.md but changes remain uncommitted — reflection jobs cannot commit.
+- The outreach blocker is untracked for 21 days; the next non-skipped reflection will cross the 3-cycle URGENT threshold.
+
+---
+
+## Recent decisions
+
+- 2026-04-30: Created `CURRENT_STATE.md` front door to close harness-check gap. Grounded in real state; honest about stale status and blockers.
+- 2026-05-01: Reflection pass (02:32) removed false escalation reference (`general-skillfoundry-tally-form-needed-2026-04-18.md` never existed). CURRENT_STATE.md changes uncommitted — awaiting working session to commit.
 
 ---
 
 ## What the next agent must read first
 
 1. `memory/mission.md` — why this repo exists and what it produces
-2. `memory/reports/foundry_loop_status.md` — last known lane / evidence snapshot (stale, verify before acting)
-3. `memory/signals/outreach_queue.md` — 10 unsent outreach drafts
+2. `memory/reports/foundry_loop_status.md` — last known lane / evidence snapshot (**stale and path-broken**, verify before acting)
+3. `memory/signals/outreach_queue.md` — 10 unsent outreach drafts; the LCI lane is commercially stalled until these move
 4. `skillfoundry-valuation-context/CURRENT_STATE.md` — commercial lane truth source
+5. Verify whether outreach blocker escalation exists anywhere — it does not as of 2026-05-01
 
 ---
 
