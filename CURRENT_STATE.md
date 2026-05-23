@@ -2,12 +2,12 @@
 name: CURRENT_STATE
 description: Front door for the skillfoundry-researcher-context repo — what the researcher owns, what's active, what's stale, where to dig deeper
 type: front-door
-updated: 2026-05-02
+updated: 2026-05-22
 ---
 
 # CURRENT_STATE — skillfoundry-researcher-context
 
-**Last updated**: 2026-05-02T02:29:20Z — reflection pass (12h automated)
+**Last updated**: 2026-05-22T14:24:46Z — reflection pass (12h automated)
 
 ---
 
@@ -60,10 +60,10 @@ Research outputs now support three sleeve types, not one: agent/developer toolin
 
 ## What is stale / degraded
 
-- `memory/reports/foundry_loop_status.md` generated 2026-04-11 — **21 days stale**. Path references inside (`valuation_root`, `researcher_root`) point to `/opt/projects/...` (old path); canonical is `/opt/workspace/projects/...`. Loop likely broken by path drift.
+- `memory/reports/foundry_loop_status.md` generated 2026-04-11 — **41 days stale**. Path references inside (`valuation_root`, `researcher_root`) point to `/opt/projects/...` (old path); canonical is `/opt/workspace/projects/...`. Loop likely broken by path drift.
 - No automated workflow has run since 2026-04-11. The harvest→enrich→score→draft loop (`19281a7`) emits no telemetry — cannot distinguish "ran and found nothing" from "never ran."
-- No user-directed feature commits since 2026-04-11. The only 2026-04-30/05-01/05-02 commits are housekeeping (CURRENT_STATE.md).
-- Outreach queue has been at `drafted` status for **22 days**. No external evidence on any assumption.
+- No user-directed feature commits since 2026-04-11. Commits 2026-04-30/05-01/05-02 are housekeeping; 67b2ed6 (2026-05-21) updates mission framing per ADR-0033 but adds no new research artifacts.
+- Outreach queue has been at `drafted` status for **41 days**. No external evidence on any assumption. LCI lane may be intentionally deprioritized per ADR-0033 pivot to passive channels — see Q1 in latest reflection.
 
 ---
 
@@ -72,15 +72,18 @@ Research outputs now support three sleeve types, not one: agent/developer toolin
 - **Outreach channel unblocked**: principal decision still needed; no escalation file exists in any handoff location — 3-cycle URGENT threshold crossed
 - **Foundry loop paths stale**: `foundry_loop_status.md:3-4` references `/opt/projects/` paths. Loop likely fails silently.
 - **No telemetry**: researcher workflows emit nothing; loop health is invisible to reflection and meta-scan
-- **reflect.sh auto-commit unreliable**: two consecutive reflection passes updated CURRENT_STATE.md but the post-pass auto-commit did not fire; both required manual attended-session rescue (c9faf97, pending prior)
+- **reflect.sh auto-commit unreliable (3 confirmed failures)**: three consecutive reflection passes have updated CURRENT_STATE.md but the post-pass auto-commit did not fire. `c9faf97` (2026-05-01) committed via attended session; 2026-05-22T02:29Z pass left CURRENT_STATE.md dirty-and-uncommitted; 2026-05-22T14:24Z pass confirms the same. Investigate reflect.sh commit block — HEAD-and-dirty-tree safety net may be aborting. Requires attended session to unstick.
+- **Commit 67b2ed6 frontmatter claim incorrect**: commit message stated "Frontmatter updated 2026-05-02 → 2026-05-21" but actual diff shows 2026-05-01 → 2026-05-02 only. CURRENT_STATE.md dating was 20 days stale despite the commit. Fixed in this reflection pass.
+- **Data/API sleeve has no researcher artifact**: ADR-0033 framing landed in mission.md; no corresponding assumption, probe draft, or signal file exists for this sleeve yet.
 
 ---
 
 ## What bit the last session
 
-- No user session ran in this project's cwd in the current 12h window (2026-05-01T14:30 to 2026-05-02T02:29).
-- One commit landed: `c9faf97` (Evan, attended session ~14:38 UTC) committing the prior reflection's CURRENT_STATE.md draft — necessary because reflect.sh auto-commit did not fire (same pattern as cycle before).
-- The carry-forward escalation for LCI outreach blocker has crossed the 3-cycle threshold. The next working session must either write an URGENT handoff to `supervisor/handoffs/INBOX/` or record a decision parking the LCI lane.
+- No JSONL sessions ran in this project's cwd between 2026-05-02 and 2026-05-22. All 22 reflection cycles in that window were skipped (short-circuit: no git activity).
+- `67b2ed6` (2026-05-21T21:45Z) ran from a different cwd (session 65447b9d not captured here). Correctly updated mission framing; incorrectly described frontmatter date change in commit message.
+- reflect.sh skip-on-no-activity caused the LCI escalation to go dark for 20 days. The URGENT threshold was crossed on 2026-05-02 and no handoff has materialized — a structural gap between reflection write access and supervisor/handoffs/INBOX/ write access.
+- LCI lane status unclear: may be intentionally deprioritized under ADR-0033 pivot. If so, CURRENT_STATE.md should record a decision, not leave it as a stalled escalation.
 
 ---
 
@@ -89,15 +92,19 @@ Research outputs now support three sleeve types, not one: agent/developer toolin
 - 2026-04-30: Created `CURRENT_STATE.md` front door to close harness-check gap. Grounded in real state; honest about stale status and blockers.
 - 2026-05-01 (c9faf97): Reflection pass (02:32) removed false escalation reference. Committed via attended session because reflect.sh auto-commit did not fire. Pattern now recurring — reflect.sh needs diagnostic.
 - 2026-05-02: Reflection pass surfaced 3-cycle URGENT threshold crossing for LCI blocker. CANNOT self-execute URGENT handoff; escalated to general session / principal via reflection file.
+- 2026-05-21 (67b2ed6): ADR-0033 portfolio broadening applied to mission.md — three research sleeve types now explicit. CURRENT_STATE.md received portfolio framing note. Run from workspace-root cwd.
+- 2026-05-22T02:29Z: Reflection pass corrected stale frontmatter dating; flagged data/API sleeve as having no researcher artifact despite framing update.
+- 2026-05-22T14:24Z: Reflection pass confirmed reflect.sh auto-commit failure is recurring (3rd occurrence). No new activity in this window. All prior blockers persist.
 
 ---
 
 ## What the next agent must read first
 
-1. `memory/mission.md` — why this repo exists and what it produces
-2. **This file's LCI escalation warning** — 3-cycle threshold crossed; requires decision before any other researcher work
-3. `memory/signals/outreach_queue.md` — 10 unsent outreach drafts; the LCI lane is commercially stalled until these move
+1. `memory/mission.md` — three-sleeve mission framing now live (updated 2026-05-21)
+2. **LCI lane decision**: Is it stalled or intentionally deprioritized per ADR-0033? The 6-cycle escalation is consuming CURRENT_STATE.md attention unnecessarily if the lane is parked. Park it or send the outreach.
+3. `memory/signals/outreach_queue.md` — 10 unsent outreach drafts (41 days at `drafted`)
 4. `skillfoundry-valuation-context/CURRENT_STATE.md` — commercial lane truth source
+5. `runtime/.meta/skillfoundry-researcher-reflection-2026-05-22T14-24-46Z.md` — latest reflection (14:24 UTC)
 5. `memory/reports/foundry_loop_status.md` — **stale and path-broken**; verify before acting
 
 ---
