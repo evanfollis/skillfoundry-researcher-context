@@ -73,11 +73,23 @@ Preserved (dormant, nothing deleted):
 - Probe draft: `memory/probes/drafts/launch-compliance-intelligence-manual-offer.md`
 - Harvest/enrich reports + scripts: `memory/reports/`, `scripts/`
 
+**The park is enforced in code, not just declared.** `scripts/foundry_loop_run.py`
+regenerates `outreach_queue.md` from scratch on every run — a single run would
+have erased the dormant marker and rebuilt a live `drafted` send queue holding 10
+real people's contact addresses. A banner in a file that a script overwrites is
+not a park. The loop now hard-stops on `LANE_PARKED` (no-op, exit 0 — a parked
+lane is designed behavior, not a failure), and `write_outreach_queue()` raises if
+called directly. Verified: running the loop leaves the queue byte-identical.
+
+There is **no send capability anywhere in skillfoundry** — no SMTP, no mail
+client, no Twitter/GitHub API writer. The queue cannot auto-send even if
+regenerated. Audited 2026-07-12.
+
 **Resume only on a positive signal**: an inbound request, fresh buyer-demand
 evidence, a materially better zero-touch channel, or explicit principal
 reprioritization. The continued existence of the drafts is not a reason to
-resume. On resume, re-verify every target — the list is ~3 months stale — and
-write a successor Decision before any contact.
+resume. On resume, re-verify every target — the list is ~3 months stale — write a
+successor Decision, and flip `LANE_PARKED` **last**, not first.
 
 ---
 

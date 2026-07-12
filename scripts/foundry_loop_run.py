@@ -21,6 +21,22 @@ TARGET_PROFILES_DIR = ROOT / "memory" / "signals" / "target_profiles"
 OUTREACH_QUEUE_PATH = ROOT / "memory" / "signals" / "outreach_queue.md"
 OUTREACH_DRAFTS_DIR = ROOT / "memory" / "signals" / "outreach_drafts"
 
+# The LCI lane is PARKED (2026-07-12) per the valuation-context Decision
+# `2026-07-12-park-launch-compliance-intelligence-lane` (decision_type: pause).
+#
+# This whole loop exists to harvest, score, and draft LCI outreach. It must not
+# run while the lane is parked: write_outreach_queue() rebuilds
+# memory/signals/outreach_queue.md from scratch, so a single run would erase the
+# dormant marker and re-emit 10 real people's contact addresses as a live
+# `drafted` send queue with active send rules. The dormant marker lives in a file
+# this script overwrites, so the park has to be enforced here or not at all.
+#
+# Do not flip this to False to "just re-run the harvest". Resuming needs a
+# positive resume signal and a successor Decision first; the code flip is the
+# last step, not the first.
+LANE_PARKED = True
+PARK_DECISION_ID = "2026-07-12-park-launch-compliance-intelligence-lane"
+
 TABLE_SPLIT_RE = __import__("re").compile(r"^\|")
 
 TOUCH_1_TEMPLATE = """I've been looking closely at MCP launches and keep seeing a gap between "server works" and "server is actually ready for public distribution."
@@ -232,6 +248,12 @@ def draft_outreach(scored_targets: list[dict[str, object]], max_drafts: int = 10
 
 def write_outreach_queue(drafts: list[dict[str, str]]) -> None:
     """Write the outreach queue summary."""
+    if LANE_PARKED:
+        raise RuntimeError(
+            f"LCI lane is parked ({PARK_DECISION_ID}); refusing to regenerate "
+            f"{OUTREACH_QUEUE_PATH}. Rebuilding it would overwrite the dormant "
+            "marker and re-emit a live send queue of real contact addresses."
+        )
     lines = [
         "# Outreach Queue",
         "",
@@ -287,6 +309,21 @@ def write_run_log(
 
 
 def main() -> None:
+    if LANE_PARKED:
+        # Exit 0, not a failure code: a parked lane is designed behavior, not an
+        # error. Emitting a failure here would be a false positive in meta-scan.
+        print(
+            f"LCI lane is PARKED (Decision {PARK_DECISION_ID}) — foundry loop is a "
+            "no-op.\n"
+            "This loop only harvests, scores, and drafts LCI outreach; running it "
+            "would clobber the dormant outreach queue and rebuild a live send "
+            "queue of real contact addresses.\n"
+            "Resume requires a positive signal and a successor Decision, not a "
+            "code flip.",
+            file=sys.stderr,
+        )
+        return
+
     generated_at = datetime.now(UTC)
     steps: list[tuple[str, bool, str]] = []
 
