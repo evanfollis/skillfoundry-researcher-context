@@ -1,10 +1,24 @@
 # Candidate CriticalAssumption: launch-compliance-intelligence
 
 - `assumption_id`: `candidate-launch-compliance-intelligence`
-- `status`: `candidate`
+- `status`: `parked`
 - `created_at`: `2026-04-11`
+- `parked_at`: `2026-07-12`
+- `parking_decision_id`: `2026-07-12-park-launch-compliance-intelligence-lane`
 - `owner`: `skillfoundry`
 - `source_note`: [IDEA_HUNT.md](../findings/IDEA_HUNT.md)
+
+> **PARKED 2026-07-12 — reversible; the thesis below is NOT falsified.**
+>
+> The downstream manual-offer probe never made external contact, so nothing here
+> was ever tested against a real builder. Parked on principal instruction per
+> Decision `2026-07-12-park-launch-compliance-intelligence-lane` (in
+> `skillfoundry-valuation-context/memory/venture/decisions/`).
+>
+> The part that failed is the **channel** — direct outreach requires
+> principal-initiated contact, which this workspace does not do. The problem
+> thesis below survives intact and is a legitimate input to any future
+> zero-touch reframing. Preserve it; do not treat the park as a verdict.
 
 ## Title
 

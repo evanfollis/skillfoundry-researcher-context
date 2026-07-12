@@ -2,9 +2,18 @@
 
 - `probe_id`: `draft-launch-compliance-intelligence-manual-offer`
 - `assumption_id`: `candidate-launch-compliance-intelligence`
-- `status`: `draft`
+- `status`: `parked`
 - `probe_type`: `manual_offer`
 - `artifact_class`: `service_probe`
+- `parked_at`: `2026-07-12`
+- `parking_decision_id`: `2026-07-12-park-launch-compliance-intelligence-lane`
+
+> **PARKED 2026-07-12 — reversible. Do not action this draft.**
+>
+> The promoted probe (`skillfoundry-valuation-context/memory/venture/probes/`)
+> was parked on principal instruction per Decision
+> `2026-07-12-park-launch-compliance-intelligence-lane`. This draft is retained
+> as lineage, not as a work item.
 
 ## Shape
 
