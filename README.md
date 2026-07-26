@@ -3,6 +3,16 @@
 This repository is the live context workspace for the Skillfoundry `researcher`
 agent.
 
+**Lifecycle:** active. This is the canonical researcher lineage, not an
+independently deployed service.
+
+**Verified today:** the declaration and pinned front door validate, operator
+scripts compile, and patch hygiene passes through `make check`. This does not
+claim that external-market evidence exists or that the parked LCI lane resumed.
+
+See [docs/architecture.md](docs/architecture.md) for authority boundaries and
+dated prompt-governance, runtime-path, and host-containment exceptions.
+
 It is a harness-compliant context repo. The hub owns reusable role profiles and
 projects them here as concrete seed artifacts. This repo then becomes the evolving,
 current-state mind for the concrete agent instance.
